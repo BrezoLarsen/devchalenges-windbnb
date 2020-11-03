@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+
   title = 'windbnb';
+  public showPopup: boolean = false;
+
+  openPopup() {
+    this.showPopup = true;
+  }
 }

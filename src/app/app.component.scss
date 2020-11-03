@@ -1,0 +1,29 @@
+.main {
+  max-width: 1197px;
+  margin: auto;
+  font-family: var(--main-font);
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-block-start: 30px;
+  margin-block-end: 60px;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  p {
+    font-size: 14px;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 34px;
+  row-gap: 42px;
+}
