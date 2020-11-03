@@ -1,7 +1,11 @@
 .main {
-  max-width: 1197px;
+  max-width: 1255px;
   margin: auto;
   font-family: var(--main-font);
+  &.overlay-on {
+    height: 98vh;
+    overflow: hidden;
+  }
 }
 
 header {
@@ -10,12 +14,35 @@ header {
   justify-content: space-between;
   margin-block-start: 30px;
   margin-block-end: 60px;
+  @media screen and (max-width: 1255px) {
+    max-width: 824px;
+    margin: 20px auto 40px;
+  }
+  @media screen and (max-width: 850px) {
+    display: block;
+    max-width: 395px;
+    margin: 20px auto 0;
+  }
+}
+
+.search {
+  @media screen and (max-width: 850px) {
+    max-width: 90%;
+    margin: 40px auto 0;
+  }
 }
 
 .title {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  @media screen and (max-width: 1255px) {
+    max-width: 824px;
+    margin: 20px auto 40px;
+  }
+  @media screen and (max-width: 850px) {
+    max-width: 395px;
+  }
   p {
     font-size: 14px;
   }
@@ -26,4 +53,24 @@ header {
   grid-template-columns: 1fr 1fr 1fr;
   column-gap: 34px;
   row-gap: 42px;
+  @media screen and (max-width: 1255px) {
+    grid-template-columns: 395px 395px;
+    justify-content: center;
+  }
+  @media screen and (max-width: 850px) {
+    grid-template-columns: 395px;
+  }
+}
+
+.overlay {
+  display: none;
+  background: rgba(79, 79, 79, 0.4);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  &.overlay-on {
+    display: block;
+  }
 }
