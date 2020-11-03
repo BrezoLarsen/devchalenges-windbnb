@@ -2,7 +2,7 @@
   <header>
     <div class="logo"><img src="assets/logo.svg" alt=""></div>
     <div class="search" (click)="openPopup()">
-      <app-input></app-input>
+      <app-input  [valueLocation]="'Helsinki, Finland'"></app-input>
     </div>
   </header>
   <div class="popup" *ngIf="showPopup">

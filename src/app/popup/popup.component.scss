@@ -13,4 +13,7 @@
     color: #EB5757;
     cursor: pointer;
   }
+  @media screen and (max-width: 850px) {
+    padding: 20px;
+  }
 }

@@ -7,7 +7,10 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class InputComponent implements OnInit {
 
-  public isActive: boolean = false;
+  @Input() showLabel: boolean = false;
+  @Input() isBlock: string = '';
+  @Input() valueLocation: string = '';
+  @Input() isPopUp: string = '';
 
   constructor() { }
 
@@ -15,7 +18,6 @@ export class InputComponent implements OnInit {
   }
 
   changeInputState() {
-    this.isActive = !this.isActive;
   }
 
 }
