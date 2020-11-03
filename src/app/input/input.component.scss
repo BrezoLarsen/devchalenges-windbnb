@@ -1,0 +1,43 @@
+.search {
+  display: grid;
+  grid-template-columns: 138px 106px 53px;
+  align-items: center;
+  overflow: hidden;
+  box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+  text-align: center;
+  font-family: var(--secondary-font);
+  color: #000;
+  &-input {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  &.is-active {
+    input {
+      + label {
+        display: none;
+      }
+      &:focus {
+        + label {
+          display: block;
+        }
+      }
+    }
+  }
+}
+
+input {
+  border: none;
+  outline: none;
+  text-align: center;
+  height: 55px;
+  border-right: 1px solid #F2F2F2;
+  padding: 0;
+  + label {
+    display: none;
+  }
+}
+
+span {
+  color: #EB5757;
+}
