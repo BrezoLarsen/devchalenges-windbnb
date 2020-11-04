@@ -1,11 +1,45 @@
 <div class="search {{isBlock}} {{isPopUp}}">
-  <div class="search-input">
-    <input class="{{isBlock}}" type="text" placeholder="Add location" value="{{valueLocation}}">
+  <div class="search-input-box">
+    <input class="search-input {{isBlock}}" type="text" placeholder="Add location" value="{{valueLocation}}">
     <label *ngIf="showLabel" for="">Location</label>
   </div>
-  <div class="search-input">
-    <input class="{{isBlock}}" type="text" placeholder="Add guests">
+  <div class="search-input-box">
+    <input class="search-input {{isBlock}}" type="text" placeholder="Add guests" value="{{valueGuests}}">
     <label *ngIf="showLabel" for="">Guests</label>
   </div>
-  <span class="search-icon material-icons">search</span>
+  <div [ngClass]="{'search-button' : isPopUp}">
+    <span class="search-icon material-icons">search</span><span *ngIf="isPopUp"> Search</span>
+  </div>
+</div>
+
+
+<div class="search-options {{isPopUp}}">
+  <div *ngIf="isPopUp" class="search-result">
+    <div (click)="getCity(place)" class="search-result-item" *ngFor="let place of staysService.availablePlaces"><span class="material-icons">place</span>{{place}}, Finland</div>
+  </div>
+
+  <div *ngIf="isPopUp" class="search-guest-result">
+    <div class="search-guest-result-item">
+      <div class="search-guest-result-item-title">Adults</div>
+      <div class="search-guest-result-item-text">Ages 13 or above</div>
+      <div class="search-guest-result-item-block-input">
+        <div class="search-guest-result-button">+</div>
+        <input class="search-guest-result-input" type="text" disabled value="0">
+        <div class="search-guest-result-button">-</div>
+      </div>
+    </div>
+    <div class="search-guest-result-item">
+      <div class="search-guest-result-item-title">Children</div>
+      <div class="search-guest-result-item-text">Ages 2-12</div>
+      <div class="search-guest-result-item-block-input">
+        <div class="search-guest-result-button">+</div>
+        <input class="search-guest-result-input" type="text" disabled value="0">
+        <div class="search-guest-result-button">-</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="isPopUp" [ngClass]="{'search-button search-button--mobile' : isPopUp}">
+  <span class="search-icon material-icons">search</span><span *ngIf="isPopUp"> Search</span>
 </div>

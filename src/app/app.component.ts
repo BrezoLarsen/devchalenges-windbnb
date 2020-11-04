@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
+import { StaysService } from './stays.service';
 
 @Component({
   selector: 'app-root',
@@ -12,13 +12,10 @@ export class AppComponent implements OnInit {
   public showPopup: boolean = false;
   public places: any = [];
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(public staysService: StaysService) { }
 
   ngOnInit(): void {
-    this.httpClient.get("assets/stays.json").subscribe(data => {
-      this.places = data;
-      console.log(this.places);
-    })
+    this.staysService.getStays();
   }
 
   openPopup() {

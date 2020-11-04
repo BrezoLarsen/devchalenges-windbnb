@@ -13,7 +13,7 @@ import { PopupComponent } from './popup/popup.component';
     AppComponent,
     InputComponent,
     CardComponent,
-    PopupComponent
+    PopupComponent,
   ],
   imports: [
     BrowserModule,
