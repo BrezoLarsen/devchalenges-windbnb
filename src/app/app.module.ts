@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { InputComponent } from './input/input.component';
 import { CardComponent } from './card/card.component';
 import { PopupComponent } from './popup/popup.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { PopupComponent } from './popup/popup.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

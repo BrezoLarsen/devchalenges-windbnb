@@ -1,17 +1,16 @@
 <div class="search {{isBlock}} {{isPopUp}}">
   <div class="search-input-box">
-    <input class="search-input {{isBlock}}" type="text" placeholder="Add location" value="{{valueLocation}}">
+    <input class="search-input {{isBlock}}" type="text" placeholder="Add location" [(ngModel)]="valueLocation">
     <label *ngIf="showLabel" for="">Location</label>
   </div>
   <div class="search-input-box">
-    <input class="search-input {{isBlock}}" type="text" placeholder="Add guests" value="{{valueGuests}}">
+    <input class="search-input {{isBlock}}" type="text" placeholder="Add guests" [(ngModel)]="valueGuests">
     <label *ngIf="showLabel" for="">Guests</label>
   </div>
   <div [ngClass]="{'search-button' : isPopUp}">
     <span class="search-icon material-icons">search</span><span *ngIf="isPopUp"> Search</span>
   </div>
 </div>
-
 
 <div class="search-options {{isPopUp}}">
   <div *ngIf="isPopUp" class="search-result">
@@ -23,23 +22,25 @@
       <div class="search-guest-result-item-title">Adults</div>
       <div class="search-guest-result-item-text">Ages 13 or above</div>
       <div class="search-guest-result-item-block-input">
-        <div class="search-guest-result-button">+</div>
-        <input class="search-guest-result-input" type="text" disabled value="0">
-        <div class="search-guest-result-button">-</div>
+        <button class="search-guest-result-button" (click)="setDecrementAdults()" [disabled]="valueAdults <= 0">-</button>
+        <input class="search-guest-result-input" type="text" disabled [(ngModel)]="valueAdults">
+        <button class="search-guest-result-button" (click)="setIncrementAdults()">+</button>
       </div>
     </div>
     <div class="search-guest-result-item">
       <div class="search-guest-result-item-title">Children</div>
       <div class="search-guest-result-item-text">Ages 2-12</div>
       <div class="search-guest-result-item-block-input">
-        <div class="search-guest-result-button">+</div>
-        <input class="search-guest-result-input" type="text" disabled value="0">
-        <div class="search-guest-result-button">-</div>
+        <button class="search-guest-result-button" (click)="setDecrementChilds()" [disabled]="valueChilds <= 0">-</button>
+        <input class="search-guest-result-input" type="text" disabled [(ngModel)]="valueChilds">
+        <button class="search-guest-result-button" (click)="setIncrementChilds()">+</button>
       </div>
     </div>
   </div>
+
+  <div *ngIf="isPopUp" [ngClass]="{'search-button search-button--mobile' : isPopUp}">
+    <span class="search-icon material-icons">search</span><span *ngIf="isPopUp"> Search</span>
+  </div>
 </div>
 
-<div *ngIf="isPopUp" [ngClass]="{'search-button search-button--mobile' : isPopUp}">
-  <span class="search-icon material-icons">search</span><span *ngIf="isPopUp"> Search</span>
-</div>
+
