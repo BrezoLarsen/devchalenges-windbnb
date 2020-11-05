@@ -1,5 +1,6 @@
 .main {
   max-width: 1255px;
+  min-height: calc(100vh - 38px);
   margin: auto;
   font-family: var(--main-font);
   &.overlay-on {
@@ -18,7 +19,7 @@ header {
     max-width: 824px;
     margin: 20px auto 40px;
   }
-  @media screen and (max-width: 850px) {
+  @media screen and (max-width: 768px) {
     display: block;
     max-width: 395px;
     margin: 20px auto 0;
@@ -29,6 +30,25 @@ header {
   @media screen and (max-width: 850px) {
     max-width: 355px;
     margin: 40px auto 0;
+  }
+}
+
+.search-clean {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  width: 135px;
+  height: 48px;
+  background: #EB5757;
+  box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+
+  font-size: 14px;
+  color: #fff;
+  cursor: pointer;
+  @media screen and (max-width: 768px) {
+    margin-top: 20px;
   }
 }
 
@@ -72,5 +92,17 @@ header {
   left: 0;
   &.overlay-on {
     display: block;
+  }
+}
+
+.footer-content {
+  max-width: 400px;
+  margin: 100px auto 20px;
+  padding: 20px 0 0;
+  border-top: 1px solid #d8d8d8;
+  text-align: center;
+  a {
+    color: #828282;
+    text-decoration: none;
   }
 }

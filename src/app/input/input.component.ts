@@ -17,14 +17,32 @@ export class InputComponent implements OnInit {
   public valueChilds: number = 0;
   public valueGuests: number;
 
+  public showResults: boolean = false;
+
+  public inputCitiesArray: any = [];
+
   constructor(public staysService: StaysService) { }
 
   ngOnInit(): void {
-    this.staysService.setAvailablesCities();
+    this.inputCitiesArray = this.staysService.places;
   }
 
   getCity(city) {
     this.valueLocation = city;
+    this.showResults = false;
+  }
+
+  setFilteredCities(valueLocation) {
+    this.inputCitiesArray = this.staysService.places.filter(place => {
+      return place.city.toLowerCase().indexOf(valueLocation.toLowerCase()) > -1;
+    });
+    this.inputCitiesArray = this.inputCitiesArray.map(place => place.city).filter(
+      (value, index, self) => self.indexOf(value) === index);
+    this.showResults = true;
+  }
+
+  search(valueLocation?, valueGuests?) {
+    this.staysService.applyFilters(valueLocation, valueGuests);
   }
 
   getValueGuests() {

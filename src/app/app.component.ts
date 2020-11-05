@@ -9,7 +9,6 @@ import { StaysService } from './stays.service';
 export class AppComponent implements OnInit {
 
   title = 'windbnb';
-  public showPopup: boolean = false;
   public places: any = [];
 
   constructor(public staysService: StaysService) { }
@@ -19,10 +18,6 @@ export class AppComponent implements OnInit {
   }
 
   openPopup() {
-    this.showPopup = true;
-  }
-
-  closePopup(value: boolean) {
-    this.showPopup = value;
+    this.staysService.showPopup = true;
   }
 }

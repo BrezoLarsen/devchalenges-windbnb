@@ -1,20 +1,22 @@
 <div class="search {{isBlock}} {{isPopUp}}">
   <div class="search-input-box">
-    <input class="search-input {{isBlock}}" type="text" placeholder="Add location" [(ngModel)]="valueLocation">
+    <input class="search-input {{isBlock}}" type="text" placeholder="Add location" [(ngModel)]="valueLocation" (ngModelChange)="setFilteredCities(valueLocation)">
     <label *ngIf="showLabel" for="">Location</label>
   </div>
   <div class="search-input-box">
-    <input class="search-input {{isBlock}}" type="text" placeholder="Add guests" [(ngModel)]="valueGuests">
+    <input class="search-input {{isBlock}}" type="text" placeholder="Add guests" [(ngModel)]="valueGuests" disabled>
     <label *ngIf="showLabel" for="">Guests</label>
   </div>
-  <div [ngClass]="{'search-button' : isPopUp}">
+  <div (click)="search(valueLocation, valueGuests)" [ngClass]="{'search-button' : isPopUp}">
     <span class="search-icon material-icons">search</span><span *ngIf="isPopUp"> Search</span>
   </div>
 </div>
 
 <div class="search-options {{isPopUp}}">
-  <div *ngIf="isPopUp" class="search-result">
-    <div (click)="getCity(place)" class="search-result-item" *ngFor="let place of staysService.availablePlaces"><span class="material-icons">place</span>{{place}}, Finland</div>
+  <div>
+    <div *ngIf="isPopUp && showResults" class="search-result">
+      <div (click)="getCity(place)" class="search-result-item" *ngFor="let place of inputCitiesArray"><span class="material-icons">place</span>{{place}}, Finland</div>
+    </div>
   </div>
 
   <div *ngIf="isPopUp" class="search-guest-result">
@@ -38,7 +40,7 @@
     </div>
   </div>
 
-  <div *ngIf="isPopUp" [ngClass]="{'search-button search-button--mobile' : isPopUp}">
+  <div (click)="search(valueLocation, valueGuests)" *ngIf="isPopUp" [ngClass]="{'search-button search-button--mobile' : isPopUp}">
     <span class="search-icon material-icons">search</span><span *ngIf="isPopUp"> Search</span>
   </div>
 </div>

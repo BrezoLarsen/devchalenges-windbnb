@@ -1,21 +1,30 @@
-<div class="main" [ngClass]="showPopup ? 'overlay-on' : ''">
+<div class="main" [ngClass]="staysService.showPopup ? 'overlay-on' : ''">
   <header>
     <div class="logo"><img src="assets/logo.svg" alt=""></div>
-    <div class="search-box" (click)="openPopup()">
+    <div *ngIf="!staysService.buttonCleanFilters" class="search-box" (click)="openPopup()">
       <app-input [valueLocation]="'Helsinki, Finland'"></app-input>
     </div>
+    <div *ngIf="staysService.buttonCleanFilters" class="search-clean" (click)="staysService.cleanFilters()">
+      <span class="material-icons">cleaning_services</span> Clean filters
+    </div>
   </header>
-  <div class="popup" *ngIf="showPopup">
-    <app-popup (closeEvent)="closePopup($event)"></app-popup>
-  </div>
   <section>
     <div class="title">
       <h1>Stays in Finland</h1>
-      <p><span>12+</span>stays</p>
+      <p><span>{{(staysService.availablePlaces.length > 12) ? '12+' : staysService.availablePlaces.length}} </span>stays</p>
     </div>
     <div class="grid">
-      <app-card *ngFor="let place of staysService.places" [place]=place></app-card>
+      <app-card *ngFor="let place of staysService.availablePlaces" [place]=place></app-card>
     </div>
   </section>
+  <footer>
+    <div class="footer-content">
+      <a href="https://devchallenges.io/profile/CA4R45moGF3poY1o6OW6" target="_blank">@Brezo</a> ~ <a href="https://devchallenges.io/" target="_blank">DevChallenges.io</a>
+    </div>
+  </footer>
 </div>
-<div [ngClass]="showPopup ? 'overlay-on' : ''" class="overlay"></div>
+
+<div class="popup" *ngIf="staysService.showPopup">
+  <app-popup (closeEvent)="staysService.closePopup($event)"></app-popup>
+</div>
+<div [ngClass]="staysService.showPopup ? 'overlay-on' : ''" class="overlay"></div>
